@@ -1,0 +1,9 @@
+.formStyles{
+    
+    transform: translate(15deg);
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    border-radius: 15px;
+}
+.shadow{
+    box-shadow: 2px 2px 2px 2px rgb(163, 160, 160) !important;
+}

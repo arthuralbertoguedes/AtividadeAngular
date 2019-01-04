@@ -1,0 +1,18 @@
+<section class="text-center row m-5" *ngIf="telaLoginAberta; else telaCliente">
+  <div class=" text-danger d-block mx-auto col-5 p-2 py-4 shadow">
+      <form action="" class="formStyles form-group" >
+          <input class="mt-1 form-control w-50 mx-auto" type="text" placeholder="Usuario" #usuario (input)="capturarUsuario(usuario.value)">
+          <br>
+          <input class="mt-1 form-control w-50 mx-auto" type="password" placeholder="Senha" #senha (input)="capturarSenha(senha.value)">
+          <br>
+          <button class="btn btn-success mt-2 w-50 " (click)="autenticarUsuario($event)">Entrar</button>
+          <div class="alert alert-danger mt-3 " *ngIf="mensagemErro">Usuario/senha incorretos</div>
+      </form>
+  </div>
+</section>
+
+<ng-template #telaCliente>
+    <app-topo></app-topo>
+    <router-outlet></router-outlet>
+    <app-rodape></app-rodape>
+</ng-template>

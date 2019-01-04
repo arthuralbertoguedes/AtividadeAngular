@@ -1,0 +1,19 @@
+<section class="text-center row m-5 ">
+    <div class="d-block mx-auto col-5 p-3 shadow">
+      Bem-vindo cliente!
+      <h1>Cadastrar usuario</h1>
+      <form action="" class="formStyles form-group" >
+          <label for="">Nome do contato:</label>
+          <input class="mt-1 form-control mx-auto w-50" type="text" (input)="nome = nomeContato.value" [value]="nome" #nomeContato>
+          <br>
+          <label for="">Telefone do contato:</label>
+          <input class="mt-1 form-control mx-auto w-50" type="text" #nomeTelefone (input)="telefone = nomeTelefone.value" [value]="telefone"> 
+          <br>
+          <label for="">Endereco do contato:</label>
+          <input class="mt-1 form-control mx-auto w-50" type="text" #nomeEndereco (input)="endereco = nomeEndereco.value" [value]="endereco"> 
+          <br>
+          <button class="btn btn-success mt-2 " (click)="realizarCadastro($event);" #btnCadastro>Cadastrar</button>
+          <div class="alert alert-success mt-3 " *ngIf="cadastrou">Cadastro realizado com sucesso!</div>
+      </form>
+    </div>
+</section>
