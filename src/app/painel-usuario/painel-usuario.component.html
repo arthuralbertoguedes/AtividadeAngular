@@ -1,5 +1,5 @@
 <section class="text-center row m-5 ">
-    <div class="d-block mx-auto col-5 p-3 shadow">
+    <div class="d-block mx-auto col-5 p-3 shadow formStyle">
       Bem-vindo cliente!
       <h1>Cadastrar usuario</h1>
       <form action="" class="formStyles form-group" >
@@ -12,8 +12,33 @@
           <label for="">Endereco do contato:</label>
           <input class="mt-1 form-control mx-auto w-50" type="text" #nomeEndereco (input)="endereco = nomeEndereco.value" [value]="endereco"> 
           <br>
+          <label for="">Data de nascimento</label>
+          <input type="date" #calendario (keyup)="setData(calendario.value)" [value]="data">
+          <br>
           <button class="btn btn-success mt-2 " (click)="realizarCadastro($event);" #btnCadastro>Cadastrar</button>
           <div class="alert alert-success mt-3 " *ngIf="cadastrou">Cadastro realizado com sucesso!</div>
+          <div class="alert alert-danger mt-3 " #erro *ngIf="erroCadastro">Preencha todos os campos!</div>
+          
       </form>
     </div>
+</section>
+
+
+<section>
+    <p-table [value]="contatos">
+            <ng-template pTemplate="header">
+                <tr>
+                    <th *ngFor="let contato of contatos">
+                        {{contato.header}}
+                    </th>
+                </tr>
+            </ng-template>
+            <ng-template pTemplate="body" let-car>
+                <tr>
+                    <td *ngFor="let contato of contatos">
+                        {{contato[cols.field]}}
+                    </td>
+                </tr>
+            </ng-template>
+        </p-table>
 </section>

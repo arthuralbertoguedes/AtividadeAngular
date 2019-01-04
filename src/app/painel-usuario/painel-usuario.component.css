@@ -1,0 +1,9 @@
+.formStyle{
+    background: linear-gradient(to bottom right, rgb(149, 197, 161), white) !important;
+    border-radius: 25px;
+   
+}
+.formStyle label{
+    font-family: 'Courier New', Courier, monospace;
+    font-weight: 600;
+}

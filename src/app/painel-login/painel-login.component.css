@@ -5,3 +5,8 @@
     padding: 30px !important;
     background: linear-gradient(to bottom right,rgb(149, 197, 161), white) !important;
 }
+.divErro{
+    font-size: 15px;
+    font-weight: 600;
+    font-family: 'Courier New', Courier, monospace;
+}

@@ -6,7 +6,7 @@
           <input class="mt-1 form-control w-50 mx-auto" type="password" placeholder="Senha" #senha (input)="capturarSenha(senha.value)">
           <br>
           <button class="btn btn-success mt-2 w-50 " (click)="autenticarUsuario($event)">Entrar</button>
-          <div class="alert alert-danger mt-3 " *ngIf="mensagemErro">Usuario/senha incorretos</div>
+          <div class="alert alert-danger mt-3 divErro" *ngIf="mensagemErro">Usuario/senha incorretos</div>
       </form>
   </div>
 </section>

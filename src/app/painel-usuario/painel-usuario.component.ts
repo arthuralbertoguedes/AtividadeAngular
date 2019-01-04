@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ContatoModel } from '../model/contato.model';
+import { ContatosService } from '../contatos.service';
 
+import {TableModule} from 'primeng/table';
 
 @Component({
   selector: 'app-painel-usuario',
@@ -13,30 +15,52 @@ export class PainelUsuarioComponent implements OnInit {
   private telefone : string = "";
   private endereco : string = "";
   private contatos : ContatoModel[] = [];
-  
-  constructor() { }
+  private erroCadastro : boolean = false;
+  private data : any;
+  private cols : any[];
+  constructor(private contatoService : ContatosService) {
+      console.log(this.data)
+   }
 
   ngOnInit() {
+    this.cols = [
+      {field: 'nome', header: 'Nome '},
+      {field: 'telefone', header: 'Telefone '},
+      {field: 'endereco', header: 'Endereço '}
+    ];
+    console.log(this.cols)
   }
 
-  realizarCadastro(e : Event){
+  realizarCadastro(e : Event) : void{
     e.preventDefault();
-    
     this.criarContato();
-    this.cadastrou = true;
-    
-    this.nome = "";
-    this.telefone = "";
-    this.endereco = "";
-    
   }
 
-  criarContato(){
+  criarContato() : void{
+    
+    if(
+      this.nome == "" || this.telefone == "" || this.endereco == ""){
+      this.erroCadastro = true;
+      this.cadastrou = false;
+    }
+    else{
     let novoContato = new ContatoModel(this.nome,this.telefone,this.endereco);
-    this.contatos.push(novoContato);
-    console.log(this.contatos);
+      this.contatoService.adicionarContato(novoContato);
+      
+      this.nome = "";
+      this.telefone = "";
+      this.endereco = "";
+
+      this.cadastrou = true;
+      this.erroCadastro = false;
+
+    }
+
   }
+
+  //Ajustar aqui
+  setData(data : any){
+        let dataAniversario = new Date(data);
+        console.log(dataAniversario)
+    }
 }
-/*
- nomeContato.value=''; nomeTelefone.value=''; nomeEndereco.value='';
-*/ 

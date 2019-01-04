@@ -15,6 +15,9 @@ import { PainelnovoContatoComponent } from './painelnovo-contato/painelnovo-cont
 import { PainelBuscarContatoComponent } from './painel-buscar-contato/painel-buscar-contato.component';
 import { PainelDeletarContatoComponent } from './painel-deletar-contato/painel-deletar-contato.component';
 
+import {AccordionModule} from 'primeng/accordion';     //accordion and accordion tab
+
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -30,7 +33,8 @@ import { PainelDeletarContatoComponent } from './painel-deletar-contato/painel-d
   imports: [
     BrowserModule,
     FormsModule,
-    RouterModule.forRoot(ROUTES)
+    RouterModule.forRoot(ROUTES),
+    AccordionModule
   ],
   providers: [],
   bootstrap: [AppComponent]
