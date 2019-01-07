@@ -7,3 +7,20 @@
     font-family: 'Courier New', Courier, monospace;
     font-weight: 600;
 }
+
+.tabelaContatos td{
+    padding: 5px;
+    border: 2px solid #c8c8c8 !important;
+   
+}
+.tabelaContatos td:nth-child(even){
+    background: #eee;
+}
+.tabelaContatos th{
+    padding: 5px 15px;
+    background: #ddd;
+    
+}
+.clear{
+    clear: both;
+}

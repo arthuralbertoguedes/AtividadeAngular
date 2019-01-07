@@ -15,20 +15,22 @@ export class PainelUsuarioComponent implements OnInit {
   private telefone : string = "";
   private endereco : string = "";
   private contatos : ContatoModel[] = [];
+  private data : string;
   private erroCadastro : boolean = false;
-  private data : any;
+  private mostrarResultados : boolean = false;
   private cols : any[];
   constructor(private contatoService : ContatosService) {
-      console.log(this.data)
+      
    }
 
   ngOnInit() {
     this.cols = [
       {field: 'nome', header: 'Nome '},
       {field: 'telefone', header: 'Telefone '},
-      {field: 'endereco', header: 'Endereço '}
+      {field: 'endereco', header: 'Endereço '},
+      {field: 'dataFormatada', header: 'Data '}
     ];
-    console.log(this.cols)
+    
   }
 
   realizarCadastro(e : Event) : void{
@@ -39,13 +41,17 @@ export class PainelUsuarioComponent implements OnInit {
   criarContato() : void{
     
     if(
-      this.nome == "" || this.telefone == "" || this.endereco == ""){
+      this.nome == "" || this.telefone == "" || this.endereco == "" || this.data==undefined){
       this.erroCadastro = true;
       this.cadastrou = false;
     }
     else{
-    let novoContato = new ContatoModel(this.nome,this.telefone,this.endereco);
-      this.contatoService.adicionarContato(novoContato);
+      let novoContato = new ContatoModel(this.nome,this.telefone,this.endereco, this.data);
+      this.contatos = this.contatoService.adicionarContato(novoContato);
+
+      if(this.contatos.length>0){
+        this.mostrarResultados = true;
+      }
       
       this.nome = "";
       this.telefone = "";
@@ -53,14 +59,9 @@ export class PainelUsuarioComponent implements OnInit {
 
       this.cadastrou = true;
       this.erroCadastro = false;
-
-    }
+}
 
   }
-
-  //Ajustar aqui
-  setData(data : any){
-        let dataAniversario = new Date(data);
-        console.log(dataAniversario)
-    }
+  
+ 
 }

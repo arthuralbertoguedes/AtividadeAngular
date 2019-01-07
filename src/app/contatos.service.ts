@@ -5,13 +5,13 @@ import { ContatoModel } from './model/contato.model';
   providedIn: 'root'
 })
 export class ContatosService {
-  private contatos : ContatoModel[] = [];
   
+  public contatos : ContatoModel[] = [];
   
   constructor() { }
 
-  adicionarContato(contato : ContatoModel) : void{
+  adicionarContato(contato : ContatoModel) : ContatoModel[]{
     this.contatos.push(contato);
-    console.log(this.contatos);
+    return this.contatos;
   }
 }

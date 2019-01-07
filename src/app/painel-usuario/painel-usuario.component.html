@@ -1,5 +1,5 @@
 <section class="text-center row m-5 ">
-    <div class="d-block mx-auto col-5 p-3 shadow formStyle">
+    <div class="col-5 p-3 shadow formStyle">
       Bem-vindo cliente!
       <h1>Cadastrar usuario</h1>
       <form action="" class="formStyles form-group" >
@@ -12,33 +12,38 @@
           <label for="">Endereco do contato:</label>
           <input class="mt-1 form-control mx-auto w-50" type="text" #nomeEndereco (input)="endereco = nomeEndereco.value" [value]="endereco"> 
           <br>
-          <label for="">Data de nascimento</label>
-          <input type="date" #calendario (keyup)="setData(calendario.value)" [value]="data">
+          <label for="" class="mx-1">Data de nascimento</label>
+          <input type="date" [ngModel]="data" (ngModelChange)="data = $event" type="date" name="data"/>
           <br>
           <button class="btn btn-success mt-2 " (click)="realizarCadastro($event);" #btnCadastro>Cadastrar</button>
           <div class="alert alert-success mt-3 " *ngIf="cadastrou">Cadastro realizado com sucesso!</div>
           <div class="alert alert-danger mt-3 " #erro *ngIf="erroCadastro">Preencha todos os campos!</div>
-          
-      </form>
+        </form>
     </div>
-</section>
-
-
-<section>
-    <p-table [value]="contatos">
-            <ng-template pTemplate="header">
+    <div class="col-6 offset-1 ">
+        <p-table [columns]="cols" [value]="contatos" class="tabelaContatos">
+            <ng-template pTemplate="caption" >
+                <h3 class="h3 p-0">Seus contatos</h3>
+            
+            </ng-template>
+            <ng-template pTemplate="header" let-columns >
                 <tr>
-                    <th *ngFor="let contato of contatos">
-                        {{contato.header}}
+                    <th *ngFor="let col of columns">
+                        {{col.header}}
                     </th>
                 </tr>
             </ng-template>
-            <ng-template pTemplate="body" let-car>
+            <ng-template pTemplate="body" let-rowData let-columns="columns">
                 <tr>
-                    <td *ngFor="let contato of contatos">
-                        {{contato[cols.field]}}
+                    <td *ngFor="let col of columns">
+                    {{rowData[col.field]}}
                     </td>
                 </tr>
             </ng-template>
+            <ng-template pTemplate="summary" *ngIf="mostrarResultados">
+                Foram encontrados {{contatos?.length}} contatos
+            </ng-template>
         </p-table>
+    </div>
 </section>
+
